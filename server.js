@@ -113,7 +113,9 @@ app.get('/callback', function(req, res) {
         // Vai redirecionar para ela com o token na URL, assim
         // você pode fazer requisições pelo browser utilizando
         // o token
-        res.redirect('http://localhost:3000/home/#' +
+        res.redirect(`${process.env.REACT_APP_CLIENT_URL !== undefined ?
+                        process.env.REACT_APP_CLIENT_URL :
+                        'http://localhost:3000'}/home/#` +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token
